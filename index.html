@@ -256,31 +256,35 @@
     </div>
 
     <script>
-        // Set the target date 30 full days from now, excluding today
+        // Set the target date 24 days from now, excluding today
         const now = new Date();
-        const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 31, 0, 0, 0, 0); // Set date 30 days from now
+        const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 24, 0, 0, 0, 0);
 
         function countdown() {
             const currentTime = new Date().getTime();
             const timeRemaining = targetDate.getTime() - currentTime;
 
+            // Check if time remaining is greater than zero
             if (timeRemaining > 0) {
                 const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-                document.getElementById("days").innerText = days;
-                document.getElementById("hours").innerText = hours;
-                document.getElementById("minutes").innerText = minutes;
-                document.getElementById("seconds").innerText = seconds;
+                // Update the countdown elements
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
             } else {
-                clearInterval(timer);
-                document.querySelector('.countdown').innerText = "We have launched!";
+                // When countdown ends
+                document.querySelector(".content").innerHTML = "<h1>We're Live!</h1><p>Thank you for waiting!</p>";
             }
         }
 
-        const timer = setInterval(countdown, 1000); // Update countdown every second
+        // Update the countdown every second
+        setInterval(countdown, 1000);
     </script>
+    
 </body>
 </html>
