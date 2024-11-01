@@ -137,14 +137,15 @@
             font-family: 'Roboto', sans-serif;
         }
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('favicon.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            position: relative;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('favicon.png') no-repeat center center fixed;
+    background-size: 100% 100%; /* Stretches the image to cover the screen */
+    color: #fff;
+    position: relative;
+}
+
         .overlay {
             position: absolute;
             top: 0;
@@ -259,32 +260,30 @@
         // Set the target date 24 days from now, excluding today
         const now = new Date();
         const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 24, 0, 0, 0, 0);
-
+    
         function countdown() {
             const currentTime = new Date().getTime();
             const timeRemaining = targetDate.getTime() - currentTime;
-
+    
             // Check if time remaining is greater than zero
             if (timeRemaining > 0) {
                 const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                // Update the countdown elements
+    
                 document.getElementById("days").textContent = days;
                 document.getElementById("hours").textContent = hours;
                 document.getElementById("minutes").textContent = minutes;
                 document.getElementById("seconds").textContent = seconds;
             } else {
-                // When countdown ends
-                document.querySelector(".content").innerHTML = "<h1>We're Live!</h1><p>Thank you for waiting!</p>";
+                document.querySelector(".content").innerHTML = "<h1>We're Live!</h1><p>Thank you for waiting.</p>";
             }
         }
-
-        // Update the countdown every second
+    
+        // Update the countdown every 1 second
         setInterval(countdown, 1000);
-    </script>
+    </script>    
 
 </body>
 </html>
